@@ -894,20 +894,7 @@ $(document).ready(function(){
 			isSaveProgress=false;
 			notify("保存成功",1000);
 		});
-		/*var fristQuItemBody=$("#dwSurveyQuContent .li_surveyQuItemBody").first();
-		saveQus(fristQuItemBody,function(){});*/
-		/*var quBodys=$("#dwSurveyQuContent .surveyQuItemBody");
-		$.each(quBodys,function(i){
-			var quType=$(this).find("input[name='quType']").val();
-			if(quType=="RADIO"){
-				//保存单选
-				saveRadio($(this),i);
-				quCBNum++;
-			}else if(quType=="CHECKBOX"){
-				callbackNum++;
-			}
-		});
-		*/
+
 	});
 	
 	$("#publishBtn").click(function(){
@@ -919,11 +906,6 @@ $(document).ready(function(){
 			isSaveProgress=false;
 			window.location.href=ctx+"/design/my-survey-design!devSurvey.action?surveyId="+questionBelongId;
 		});
-		/*
-		var fristQuItemBody=$("#dwSurveyQuContent .li_surveyQuItemBody").first();
-		saveQus(fristQuItemBody,function(){
-			window.location.href=ctx+"/design/my-survey-design!previewDev.action?surveyId="+questionBelongId;
-		});*/
 		
 	});
 	
@@ -1730,18 +1712,15 @@ function showDialog(thDialogObj){
 
 		//单选，多选 才启用选项随机排列
 		if(quType==="RADIO" || quType==="CHECKBOX"){
-			$("#dwCommonDialog .optionAutoOrder").show();
 			$("#dwCommonDialog .optionRangeHv").show();
 		}else if(quType==="ORDERQU"){
-			$("#dwCommonDialog .optionAutoOrder").show();
+
 		}else if(quType==="SCORE"){
-			$("#dwCommonDialog .optionAutoOrder").show();
 			$("#dwCommonDialog .scoreMinMax").show();
 			if(paramInt02[0]){
 				$("#dwCommonDialog .scoreMinMax .maxScore").val(paramInt02.val());
 			}
 		}else if(quType==="MULTIFILLBLANK"){
-			$("#dwCommonDialog .optionAutoOrder").show();
 			$("#dwCommonDialog .minMaxLi").show();
 			$("#dwCommonDialog .minMaxLi .minSpan .lgleftLabel").text("最少回答");
 			$("#dwCommonDialog .minMaxLi .maxSpan").hide();
@@ -1753,7 +1732,7 @@ function showDialog(thDialogObj){
 
 		//单选，多选，填空题情况下才启用关联到联系设置项
 		if((quType=="RADIO" || quType=="CHECKBOX" || quType=="FILLBLANK")){
-			$("#dwCommonDialog .contactsAttrLi").show();
+			// $("#dwCommonDialog .contactsAttrLi").show();
 			if( contactsAttr==1){
 				$("#dwCommonDialog input[name='setAutoContacts']").prop("checked",true);
 				$("#dwCommonDialog .contactsFieldLi").show();
